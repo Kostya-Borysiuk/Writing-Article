@@ -1,0 +1,134 @@
+% Metódy inžinierskej práce
+
+\documentclass[10pt,twoside,slovak,a4paper]{article}
+
+\usepackage[slovak]{babel}
+%\usepackage[T1]{fontenc}
+\usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{url} % príkaz \url na formátovanie URL
+\usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
+
+\usepackage{cite}
+%\usepackage{times}
+
+\pagestyle{headings}
+
+\title{Sociálne siete, ktoré umožňujú nájsť zaujímavých ľudí a vhodný obsah na základe interakcií, preferencií a zadaných osobných údajov používateľa\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2024/25, vedenie: Richard Marko}} % meno a priezvisko vyučujúceho na cvičeniach
+
+\author{Kostiantyn Borysiuk\\[2pt]
+	{\small Slovenská technická univerzita v Bratislave}\\
+	{\small Fakulta informatiky a informačných technológií}\\
+	{\small \texttt{xborysiuk@stuba.sk}}
+	}
+
+\date{\small 3. októbra 2024} % upravte
+
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+V modernom svete takmer každý človek, ktorý má prístup na internet, používa jednu alebo druhú sociálnu sieť, vďaka čomu je moja téma veľmi dôležitá. Hlavnou úlohou sociálnych sietí je spájať ľudí so spoločnými záujmami.
+Vývojári analyzujú akcie používateľa v sieti a na základe jeho záujmov, prezeraných materiálov, ľudí, ktorých sleduje atď., navrhujú nový odporúčaný obsah. Analyzujú sa aj osobné údaje používateľa, ku ktorým poskytol prístup, napríklad jeho telefónne kontakty, poloha, vzdelanie, miesto výkonu práce, rodinný stav a mnohé ďalšie.
+
+V mojom článku rozoberiem systém vyhľadávania a výberu vhodného obsahu pre používateľa podľa jeho preferencií.
+\end{abstract}
+
+
+
+\section{Úvod}
+Náš svet sa vyvíja každým dňom. Ani systémy odporúčaní nestoja na mieste. Obzvlášť zaujímavé je sledovať vývoj odporúčacích systémov sociálnych médií. Vzhľadom na veľký objem informačného toku, ktorý generujú sociálne siete, výskumníci predstavujú rôzne metódy na získavanie relevantných informácií [1]. Poskytovanie personalizovaného a adaptívneho obsahu je výskumným problémom v oblasti vyhľadávania informácií (IR) a odporúčacích systémov (RS) [1]. K napísaniu tohto článku ma inšpirovalo niekoľko zdrojov. Veľmi ma zaujal článok o odporúčacích systémoch, ktoré využívajú informácie o sociálnych
+vzťahoch medzi používateľmi, kde boli sociálne vzťahy rozdelené do troch hlavných výsledkov: dôvera, akcie priateľov a interakcie [1]. Narazil som aj na rovnako zaujímavý článok, v ktorom autori skúmali potrebu odporúčacích systémov a zlepšenie výkonu pomocou dodatočných informácií o používateľoch zo sociálnych sietí [2].
+
+Cieľom mojej práce je preskúmať metódy a algoritmy na výber vhodného obsahu pre používateľa v sociálnych sieťach na základe jeho preferencií.
+
+Uveďte explicitne štruktúru článku. Tu je nejaký príklad.
+Základný problém, ktorý bol naznačený v úvode, je podrobnejšie vysvetlený v časti~\ref{nejaka}.
+Dôležité súvislosti sú uvedené v častiach~\ref{dolezita} a~\ref{dolezitejsia}.
+Záverečné poznámky prináša časť~\ref{zaver}.
+
+
+
+\section{Nejaká časť} \label{nejaka}
+
+Z obr.~\ref{f:rozhod} je všetko jasné. 
+
+\begin{figure*}[tbh]
+\centering
+%\includegraphics[scale=1.0]{diagram.pdf}
+Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
+\caption{Rozhodujúci argument.}
+\label{f:rozhod}
+\end{figure*}
+
+
+
+\section{Iná časť} \label{ina}
+
+Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
+
+Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
+
+
+\subsection{Nejaké vysvetlenie} \label{ina:nejake}
+
+Niekedy treba uviesť zoznam:
+
+\begin{itemize}
+\item jedna vec
+\item druhá vec
+	\begin{itemize}
+	\item x
+	\item y
+	\end{itemize}
+\end{itemize}
+
+Ten istý zoznam, len číslovaný:
+
+\begin{enumerate}
+\item jedna vec
+\item druhá vec
+	\begin{enumerate}
+	\item x
+	\item y
+	\end{enumerate}
+\end{enumerate}
+
+
+\subsection{Ešte nejaké vysvetlenie} \label{ina:este}
+
+\paragraph{Veľmi dôležitá poznámka.}
+Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
+
+
+
+\section{Dôležitá časť} \label{dolezita}
+
+
+
+
+\section{Ešte dôležitejšia časť} \label{dolezitejsia}
+
+
+
+
+\section{Záver} \label{zaver} % prípadne iný variant názvu
+
+
+
+%\acknowledgement{Ak niekomu chcete poďakovať\ldots}
+
+
+% týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
+\bibliography{literatura}
+
+[1] Medel, Diego & González González, Carina & Aciar, Silvana. (2021). Social Relations and Methods in Recommender Systems: A Systematic Review. International Journal of Interactive Multimedia and Artificial Intelligence. InPress. 1. 10.9781/ijimai.2021.12.004.
+
+[2] Chen, Song & Owusu, Samuel & Zhou, Lina. (2013). Social Network Based Recommendation Systems: A Short Survey. Proceedings - SocialCom/PASSAT/BigData/EconCom/BioMedCom 2013. 882-885. 10.1109/SocialCom.2013.134.
+
+\bibliographystyle{plain} % prípadne alpha, abbrv alebo hociktorý iný
+\end{document}
