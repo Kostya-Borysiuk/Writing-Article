@@ -3,7 +3,6 @@
 \documentclass[10pt,twoside,slovak,a4paper]{article}
 
 \usepackage[slovak]{babel}
-%\usepackage[T1]{fontenc}
 \usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -11,7 +10,17 @@
 \usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
 
 \usepackage{cite}
-%\usepackage{times}
+
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{caption}
+
+\usepackage{geometry}
+
+
+
 
 
 \title{Výber zaujímavých ľudí a obsahu pre používateľa na sociálnych sieťach\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2024/25, vedenie: Richard Marko}} % meno a priezvisko vyučujúceho na cvičeniach
@@ -22,7 +31,7 @@
 	{\small \texttt{xborysiuk@stuba.sk}}
 	}
 
-\date{\small 3. októbra 2024} % upravte
+\date{\small 13. decembra 2024} % upravte
 
 
 
@@ -32,46 +41,46 @@
 
 \begin{abstract}
 V modernom svete takmer každý človek, ktorý má prístup na internet, používa jednu alebo druhú sociálnu sieť, vďaka čomu je moja téma veľmi dôležitá. Hlavnou úlohou sociálnych sietí je spájať ľudí so spoločnými záujmami.
-Odporúčacie systémy analyzujú akcie používateľa v sieti a na základe jeho záujmov, prezeraných materiálov, ľudí, ktorých sleduje atď., navrhujú nový odporúčaný obsah. Analyzujú sa aj osobné údaje používateľa, ku ktorým poskytol prístup, napríklad jeho telefónne kontakty, poloha, vzdelanie, miesto výkonu práce, rodinný stav a mnohé ďalšie.
+Odporúčacie systémy analyzujú akcie používateľa v sieti a na základe jeho záujmov, prezeraných materiálov, ľudí, ktorých sleduje atď., navrhujú obsah. Analyzujú sa aj osobné údaje používateľa, ku ktorým poskytol prístup, napríklad jeho telefónne kontakty, poloha, vzdelanie, miesto výkonu práce, rodinný stav a mnohé ďalšie.
 
 V mojom článku rozoberiem systém vyhľadávania a výberu vhodného obsahu pre používateľa podľa jeho preferencií.
+
+\textbf{Keywords:} Odporúčacie systémy, algoritmy, sociálne siete.
+
 \end{abstract}
 
 
 
-\section{Úvod}
-Náš svet sa vyvíja každým dňom. Ani systémy odporúčaní nestoja na mieste. Obzvlášť zaujímavé je sledovať vývoj odporúčacích systémov sociálnych médií. Vzhľadom na veľký objem informačného toku, ktorý generujú sociálne siete, výskumníci predstavujú rôzne metódy na získavanie relevantných informácií \cite{diego01}. Poskytovanie personalizovaného a adaptívneho obsahu je výskumným problémom v oblasti vyhľadávania informácií (IR) a odporúčacích systémov (RS) \cite{diego01}. K napísaniu tohto článku ma inšpirovalo niekoľko zdrojov. Veľmi ma zaujal článok o odporúčacích systémoch, ktoré využívajú informácie o sociálnych
+
+
+
+\section{Úvod}\label{uvod}
+Náš svet sa vyvíja každým dňom. Ani systémy odporúčaní (recommendation systems) nestoja na mieste. Obzvlášť zaujímavé je sledovať vývoj odporúčacích systémov sociálnych médií. Vzhľadom na veľký objem informačného toku, ktorý generujú sociálne siete, výskumníci predstavujú rôzne metódy na získavanie relevantných informácií \cite{diego01}. Poskytovanie personalizovaného a adaptívneho obsahu je jednou z najdôležitejších úloh systémov vyhľadávania informácií a odporúčacích systémov \cite{diego01}. K napísaniu tohto článku ma inšpirovalo niekoľko zdrojov. Veľmi ma zaujal článok o odporúčacích systémoch (RS), ktoré využívajú informácie o sociálnych
 vzťahoch medzi používateľmi, kde boli sociálne vzťahy rozdelené do troch hlavných výsledkov: dôvera, akcie priateľov a interakcie \cite{diego01}. Narazil som aj na rovnako zaujímavý článok, v ktorom autori skúmali potrebu odporúčacích systémov a zlepšenie výkonu pomocou dodatočných informácií o používateľoch zo sociálnych sietí \cite{chen02}.
 
-Cieľom mojej práce je preskúmať metódy a algoritmy na výber vhodného obsahu pre používateľa v sociálnych sieťach na základe jeho preferencií.
+
+Cieľom mojej práce je preskúmať metódy a algoritmy na výber vhodného obsahu pre používateľa v sociálnych sieťach na základe jeho preferencií. Článok sa skladá z piatich častí. Druhá časť  \ref{part2} popisuje dôležitosť odporúčacích systémov. Tretia časť \ref{part3} hovorí o typoch odporúčacích systémov a základných princípoch ich fungovania. Štvrtá časť \ref{part4} popisuje fungovanie odporúčacích systémov na príklade sociálnej siete LinkedIn. Posledná časť \ref{zaver} obsahuje záver.
 
 
 
-
-
-
-
-
-
-\section{Dôležitosť odporúčacích systémov}
+\section{Dôležitosť odporúčacích systémov}\label{part2}
 
 Systémy odporúčaní sú navrhnuté tak, aby nám pomohli vyhnúť sa zmätku a frustrácii spôsobenej hľadaním požadovanej možnosti v informačne preťaženom systéme\cite{linkedin_pourheidari12}.
 
-Aby sme ukázali dôležitosť odporúčacích systémov, musíme sa pozrieť na množstvo času, ktoré každý deň strávime na sociálnych sieťach.
+Aby sme ukázali dôležitosť odporúčacích systémov, musíme sa pozrieť na množstvo času, ktoré každý deň trávime na sociálnych sieťach.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{DataReportal+Digital+2024+Global+Overview+Report+Slide+238.png}
-    \caption{Zdroj:\url{https://datareportal.com/reports/digital-2024-deep-dive-the-time-we-spend-on-social-media}}
-    \label{fig:enter-label}
+    \caption{Koľko času každý deň trávime na sociálnych sieťach.\newline{} Zdroj:
+    \href{https://datareportal.com/reports/digital-2024-deep-dive-the-time-we-spend-on-social-media}{https://datareportal.com/reports}}
+    \label{fig:spending_time}
 \end{figure}
 
-Na stránke vyššie som našiel informácie o tom, koľko času ľudia strávili na rôznych aplikáciách za jeden mesiac. Pomocou tohto príkladu môžete pochopiť, ako dobre fungujú odporúčacie systémy v sociálnych sieťach.
-
-Odporúčacie systémy pomáhajú poskytnúť používateľovi presne tie informácie, o ktoré má záujem. Týmto spôsobom sa do značnej miery rieši problém informačného preťaženia\cite{patel04}.Odporúčacie systémy pomáhajú poskytnúť používateľovi presne tie informácie, o ktoré má záujem. Týmto spôsobom sa do značnej miery rieši problém informačného preťaženia\cite{patel04}.
+Na stránke vyššie som našiel informácie o tom, koľko času ľudia strávili na rôznych aplikáciách za jeden mesiac. Pomocou tohto príkladu môžete pochopiť, ako dobre fungujú odporúčacie systémy v sociálnych sieťach, lebo ich úlohou je poskytovať vhodný obsah, aby používateľ trávil na tejto platforme čo najviac času.
 
 
-
+Odporúčacie systémy pomáhajú poskytnúť používateľovi presne tie informácie, o ktoré má záujem. Týmto spôsobom sa do značnej miery rieši problém informačného preťaženia\cite{patel04}.
 
 
 
@@ -214,6 +223,7 @@ Treba tiež povedať, že veľkou nevýhodou všetkých uvedených typov odporú
 
 
 
+
 \section{Fungovanie odporúčacích systémov na príklade LinkedIn}\label{part4}
 
 V tejto časti by som chcel preskúmať použitie odporúčacích systémov na konkrétnom príklade. Rozhodol som sa hovoriť o tom, ako fungujú odporúčacie systémy na príklade sociálnej siete LinkedIn. Zaujala ma práve táto sociálna sieť, pretože má celkom zaujímavý algoritmus poskytovania obsahu používateľovi, ktorý sa veľmi líši od ostatných sociálnych sietí.
@@ -234,12 +244,11 @@ LinkedIn možno veľmi dobre použiť ako príklad na demonštráciu fungovania 
 
 
 
+\section{Záver}\label{zaver}
 
+Na sociálnych sieťach k dispozícii je veľa rôznych informácií. Potrebujeme odporúčacie systémy, ktoré ich roztriedia a zobrazia nie všetko, ale len to, čo nás zaujíma, aby sme nemuseli tráviť veľa času hľadaním vecí, ktoré sa nám páčia. Na tento účel existujú tri hlavné typy filtrovania, ktoré sa používajú v rôznych sociálnych sieťach: kolaboratívne filtrovanie, filtrovanie na základe obsahu a hybridné filtrovanie. Z porovnania všetkých typov vyplýva, že hybridné filtrovanie je najefektívnejšie, pretože kombinuje aj kolaboratívne filtrovanie aj filtrovanie na základe obsahu, čo umožňuje presnejšie poskytnúť obsah používateľovi. Dobrým príkladom využitia hybridného typu filtrovania Social Network-Based recommendations je sociálna sieť LinkedIn, lebo odporúčania v LinkedIn priamo závisia od spojení medzi používateľmi, nielen od vlastných preferencií.
 
-
-\section{Záver} \label{zaver}
-
-Na sociálnych sieťach k dispozícii je veľa rôznych informácií. Potrebujeme odporúčacie systémy, ktoré ich roztriedia a zobrazia nie všetko, ale len to, čo nás zaujíma, aby sme nemuseli tráviť veľa času hľadaním vecí, ktoré sa nám páčia.
+Odporúčacie systémy sociálnych médií sú v súčasnosti veľmi dôležité. Pracujúcim ľuďom pomáhajú nájsť užitočné informácie pre ich prácu a ľuďom, ktorí chcú si užiť zaujímavý čas, pomáhajú nájsť obsah, ktorý sa im páči.
 
 
 \bibliography{references}
