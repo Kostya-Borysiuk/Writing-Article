@@ -53,7 +53,9 @@ Cieľom mojej práce je preskúmať metódy a algoritmy na výber vhodného obsa
 
 
 
-\section{Dôležitosť dporúčacích systémov}
+\section{Dôležitosť odporúčacích systémov}
+
+Systémy odporúčaní sú navrhnuté tak, aby nám pomohli vyhnúť sa zmätku a frustrácii spôsobenej hľadaním požadovanej možnosti v informačne preťaženom systéme\cite{linkedin_pourheidari12}.
 
 Aby sme ukázali dôležitosť odporúčacích systémov, musíme sa pozrieť na množstvo času, ktoré každý deň strávime na sociálnych sieťach.
 
@@ -212,31 +214,26 @@ Treba tiež povedať, že veľkou nevýhodou všetkých uvedených typov odporú
 
 
 
+\section{Fungovanie odporúčacích systémov na príklade LinkedIn}\label{part4}
+
+V tejto časti by som chcel preskúmať použitie odporúčacích systémov na konkrétnom príklade. Rozhodol som sa hovoriť o tom, ako fungujú odporúčacie systémy na príklade sociálnej siete LinkedIn. Zaujala ma práve táto sociálna sieť, pretože má celkom zaujímavý algoritmus poskytovania obsahu používateľovi, ktorý sa veľmi líši od ostatných sociálnych sietí.
+
+
+
+LinkedIn je sociálna sieť na rozšírenie pracovných kontaktov, kde môžu používatelia z celého sveta zverejniť svoj profil a môžu sledovať profily iných používateľov. Táto sociálna sieť sa využíva na prácu, takže profil človeka je jeho životopis, kde uvádza svoje vzdelanie, pracovné skúsenosti, zručnosti atď. Používatelia tu môžu zdieľať svoje názory a zanechať recenzie o práci v rôznych spoločnostiach.
+
+
+Pracovný ekosystém LinkedIn bol navrhnutý ako platforma na spájanie poskytovateľov a uchádzačov o zamestnanie a ako trh na efektívne spájanie potenciálnych kandidátov s voľnými pracovnými miestami\cite{linkedin_recruit13}. Veľké percento recruiterov využíva LinkedIn na hľadanie kandidátov\cite{linkedin11}. Preto je v LinkedIn veľmi dôležité správne fungovanie odporúčacích systémov, čo uľahčuje vyhľadávanie ľudí a spoločností z podobnej oblasti.
+
+
+Na rozdiel od iných sociálnych sietí, odporúčacie systémy LinkedIn nemajú taký studený štart. Je to spôsobené tým, že používateľ pri registrácii zadáva osobné údaje o sebe (zostavuje životopis). V tejto fáze už RS môžu začať odporúčať nových ľudí a spoločností, o ktoré môže mať používateľ záujem, napriek tomu, že zatiaľ nikoho nesleduje.
+
+
+LinkedIn možno veľmi dobre použiť ako príklad na demonštráciu fungovania Social Network-Based recommendations, pretože odporúčania v LinkedIn priamo závisia od spojení medzi používateľmi. Na rozdiel od iných sociálnych sietí nemôžete zdieľať príspevok s obsahom na akúkoľvek tému. Pred uverejnením príspevku ho najprv skontroluje samotný filtračný systém LinkedIn a rozhodne, či ide o spam alebo kvalitu, pretože táto sieť je určená pre ľudí, ktorí hľadajú užitočné informácie týkajúce sa práce v ich oblasti, nie obsah na pobavenie. V ďalšom kroku systém filtrovania LinkedIn rozošle príspevok používateľa jeho sledovateľom a zistí, či sú pre nich informácie užitočné a ako ľudia z tejto oblasti reagujú na tento príspevok. Ak používatelia zareagujú pozitívne, v ďalšom kroku filtrovací systém odošle príspevok ich sledovateľom, ktorí by mohli mať záujem o tento obsah. Systém využíva osobný profil používateľa na zistenie jeho preferencií a rozhodne, či mu pošle tento príspevok alebo nie. Systém filtrovania tiež určuje záujmy používateľa na základe jeho predchádzajúcich aktivít, aby mohol posielať obsah od používateľov, s ktorými najčastejšie komunikuje.
 
 
 
 
-
-\subsection{Výnimočnosť sociálnych sietí}
-
-Výnimočnosť sociálnych sietí spočíva v tom, že okrem spotreby obsahu používateľmi, existujú aj spojenia medzi nimi. To poskytuje ďalšie možnosti lepšieho výberu obsahu pre človeka. Môžeme, napríklad, zvážiť jeden z typov odporúčacích systémov – Kolaboratívne filtrovanie.
-
-Collaborative Filtering (CF) je bežne používaná technika v odporúčacích systémoch, tento prístup odporúča používateľovi obsah na základe preferencií iných podobných používateľov.\cite{dang03}
-Najdôležitejšie je, že tento odporúčací systém nepotrebuje poznať žiadne osobné informácie o človeke.
-
-
-
-\subsection{Na základe čoho sa vyberá obsah}
-
-Odporúčaný obsah sa poskytuje nie len na základe činností používateľa na sociálnej sieti a jeho osobných údajov.
-
-Okrem kolaboratívneho filtrovania existuje ešte veľa rôznych typov odporúčacích systémov:
-
-\begin{itemize}
-\item Filtrovanie na základe obsahu: Navrhovanie nového obsahu a publikácií používateľovi na základe obsahu, ktorý si už prezrel.
-\item Social Network-Based recommendations: Analýza ľudí, ktorých sledujú priatelia používateľa, a odporúčanie mu ich.
-\item Post and Content Recommendations: Tieto odporúčania sú založené na interakcii používateľa s príspevkami. Na základe reakcií používateľov na príspevky sa navrhujú nové príspevky daného charakteru.
-\end{itemize}
 
 
 
