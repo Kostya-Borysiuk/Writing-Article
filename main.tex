@@ -66,6 +66,7 @@ Aby sme ukázali dôležitosť odporúčacích systémov, musíme sa pozrieť na
 
 Na stránke vyššie som našiel informácie o tom, koľko času ľudia strávili na rôznych aplikáciách za jeden mesiac. Pomocou tohto príkladu môžete pochopiť, ako dobre fungujú odporúčacie systémy v sociálnych sieťach.
 
+Odporúčacie systémy pomáhajú poskytnúť používateľovi presne tie informácie, o ktoré má záujem. Týmto spôsobom sa do značnej miery rieši problém informačného preťaženia\cite{patel04}.Odporúčacie systémy pomáhajú poskytnúť používateľovi presne tie informácie, o ktoré má záujem. Týmto spôsobom sa do značnej miery rieši problém informačného preťaženia\cite{patel04}.
 
 
 
@@ -73,16 +74,144 @@ Na stránke vyššie som našiel informácie o tom, koľko času ľudia strávil
 
 
 
-\section{Ako fungujú odporúčacie systémy}
+\section{Ako fungujú odporúčacie systémy}\label{part3}
 
 Ako som už spomínal hlavnou úlohou sociálnych sietí je spájať ľudí so spoločnými záujmami. Práve na to potrebujeme odporúčacie systémy.
 
-Odporúčacie systémy analyzujú akcie používateľa v sociálnej sieti a na základe toho navrhujú:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{B4C6E7}}l
+>{\columncolor[HTML]{B4C6E7}}l |}
+\hline
+\multicolumn{2}{|c|}{\cellcolor[HTML]{F4B084}\begin{tabular}[c]{@{}c@{}}Odporúčacie   systémy analyzujú akcie používateľa v sociálnej sieti a na zá-\\      klade toho navrhujú:\end{tabular}} \\ \hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{B4C6E7}zaujímavých ľudí} \\ \hline
+\multicolumn{2}{|l|}{\cellcolor[HTML]{B4C6E7}vhodný obsah} \\ \hline
+\end{tabular}
+\label{tab:fungovanie RS}
+\caption{Ako fungujú odporúčacie systémy}
+\end{table}
+
+
+
+
+V sociálnych sieťach je na poskytovanie presných a vhodných odporúčaní pre používateľov najdôležitejšou vecou systému naučiť sa preferencie používateľov presne z historických informácií o správaní a informácií o sociálnych vzťahoch\cite{li_social_network08}.
+
+
+
+
+
+\subsection{Výnimočnosť sociálnych sietí}
+
+Výnimočnosť sociálnych sietí spočíva v tom, že okrem spotreby obsahu používateľmi, existujú aj spojenia medzi nimi. To poskytuje ďalšie možnosti lepšieho výberu obsahu pre človeka. Môžeme, napríklad, zvážiť jeden z typov odporúčacích systémov – kolaboratívne filtrovanie.
+
+Collaborative Filtering (CF) je bežne používaná technika v odporúčacích systémoch, tento prístup odporúča používateľovi obsah na základe preferencií iných podobných používateľov \cite{dang03}. Najdôležitejšie je, že tento odporúčací systém nepotrebuje poznať žiadne osobné informácie o človeke. Kolaboratívne filtrovanie pre systémy odporúčaní používa databázu o používateľských preferenciách na predpovedanie ďalších tém alebo produktov, ktoré by sa novému používateľovi mohli páčiť\cite{john_cf06}.
+
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Collab filtering.drawio.png}
+    \caption{Kolaboratívne filtrovanie}
+    \label{fig:collab filtering}
+\end{figure}
+
+
+Kolaboratívne filtrovanie odhaduje záujem o položku podľa záujmov používateľov „podobných“ cieľovému používateľovi, pričom hodnotenie položky je najpoužívanejšou informáciou v CF\cite{diego01}.
+
+Hlavný rozdiel medzi kolaboratívnym filtrovaním a filtrovaním založeným len na preferenciách používateľa spočíva v tom, že pri kolaboratívnom filtrovaní používateľovi môže byť poskytnutý obsah, ktorý je pre neho nový a neznámy. Deje sa tak práve vďaka prepojeniam medzi používateľmi s podobnými záujmami, ktorí sú následne pridaní do jednej skupiny. Potom sa každému z nich prezentuje podobný alebo úplne nový obsah na základe preferencií ostatných používateľov z tejto skupiny.
+
+
+\subsection{Hlavné typy odporúčacích systémov a rozdiel medzi nimi}
+
+Okrem kolaboratívneho filtrovania existuje filtrovanie na základe obsahu, hybridné filtrovanie a veľa ďalších široko používaných typov filtrovania RS, ktoré by som chcel podrobnejšie preskúmať nižšie:
+
+\begin{table}[h]
+\centering
+\scalebox{1.1}{%
+\begin{tabular}{
+>{\columncolor[HTML]{D9E1F2}}l
+>{\columncolor[HTML]{D9E1F2}}l
+>{\columncolor[HTML]{D9E1F2}}l
+>{\columncolor[HTML]{D9E1F2}}l
+>{\columncolor[HTML]{D9E1F2}}l }
+\multicolumn{5}{c}{\cellcolor[HTML]{FFD966}Existujú tri hlavné typy filtrovania:} \\
+\multicolumn{5}{l}{\cellcolor[HTML]{D9E1F2}1. Kolaboratívne   filtrovanie} \\
+\multicolumn{5}{l}{\cellcolor[HTML]{D9E1F2}2. Filtrovanie na   základe obsahu} \\
+\multicolumn{5}{l}{\cellcolor[HTML]{D9E1F2}3. Hybridné   filtrovanie}
+\end{tabular}%
+}
+\caption{Hlavné typy odporúčacích systémov}
+\label{tab:hlavne_typy_RS}
+\end{table}
+
+
+
 
 \begin{itemize}
-\item zaujímavých ľudí
-\item vhodný obsah
+\item Filtrovanie na základe obsahu (Content-based filtering):
+
+Filtrovanie na základe obsahu je tiež jedným z najdôležitejších typov odporúčacích systémov. Fungovanie tohto typu RS je založené na ponúkaní používateľovi nových videí a publikácií na základe obsahu, ktorý si už prezrel.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{content-based.drawio.png}
+    \caption{Filtrovanie na základe obsahu}
+    \label{fig:content-based}
+\end{figure}
+
+
+Hlavný rozdiel medzi CF a systémami odporúčaní založenými na obsahu je v tom, že CF používa iba údaje o hodnotení používateľských položiek na vytváranie predpovedí a odporúčaní, zatiaľ čo systémy odporúčaní založené na obsahu sa spoliehajú na funkcie používateľov a položky pre predpovede\cite{survey_cf05}. Content-based filtering vyberá obsah na základe už prezretého obsahu a preferencií používateľa. Najlepšie zodpovedajúce položky sa odporúčajú porovnaním rôznych kandidátskych položiek s položkami, ktoré používateľ predtým hodnotil\cite{thorat_cont-b07}. Ale Collaborative Filtering vyberá obsah na základe preferencií ľudí s podobnými záujmami.
+
+
+\item Hybridné filtrovanie (Hybrid filtering):
+
+Veľké spoločnosti, ktoré vytvárajú a zlepšujú systémy odporúčaní pre svoje sociálne siete, v súčasnosti nepoužívajú iba jeden typ RS, pretože ich úlohou je čo najpresnejšie vybrať obsah pre používateľa. Na tento účel ľudia vyvinuli hybridné systémy odporúčaní, ktoré kombinujú niekoľko typov RS. Väčšinou tento typ RS kombinuje Kolaboratívne filtrovanie a filtrovanie na základe obsahu. Kombinácia oboch typov vedie k zvýšeniu všeobecných vedomostí, čo prispieva k lepším odporúčaniam\cite{geetha_hybrid09}. Hybridné filtrovanie kombinuje spojenia medzi používateľmi a informácie o osobných preferenciách každého používateľa.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{hybrid_filtering.drawio.png}
+    \caption{Hybridné filtrovanie}
+    \label{fig:hybrid-filtering}
+\end{figure}
+
+
+
+\item Social Network-Based recommendations:
+
+Tento typ RS je tiež hybridný a založený na spojení medzi priateľmi na sociálnych sieťach. Na rozdiel od tradičných systémov odporúčaní by systémy odporúčaní v sociálnej sieti mohli využívať aj online sociálne vzťahy medzi používateľmi (t. j. priateľstvo) na zlepšenie výkonu odporúčaní\cite{li_social_network08}. Ak sú používatelia priatelia a sledujú sa navzájom, tak musia mať spoločné záujmy. Toto je hlavná myšlienka odporúčaní založených na sociálnej sieti. Tento typ systému odporúčaní analyzuje preferencie priateľov používateľa v tejto sieti a na základe toho navrhuje profily iných ľudí a videá, ktoré jeho priatelia preferujú.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{social_network_based.drawio.png}
+    \caption{Social Network-Based recommendations}
+    \label{fig:network-based}
+\end{figure}
+
+Obsah, ktorý bude používateľovi poskytnutý, závisí nielen od akcií samotného používateľa v sieti, ale aj od preferencií jeho priateľov.
+
+
+\item Porovnanie a výsledky:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{comparing.drawio.png}
+    \caption{Porovnanie všetkých vyššie uvedených typov filtrácie}
+    \label{fig:comparing}
+\end{figure}
+
+Hybridné filtrovanie je najefektívnejšie, pretože kombinuje kolaboratívne filtrovanie a filtrovanie na základe obsahu, čo umožňuje presnejšie poskytnúť obsah používateľovi. Kolaboratívne filtrovanie je efektívnejšie ako filtrovanie  na základe obsahu, pretože tento typ systému odporúčaní pridáva používateľa do skupiny používateľov s podobnými záujmami a navrhuje obsah, ktorý sa páčil iným v tejto skupine. Tento typ RS je založený na spojeniach medzi používateľmi a umožňuje poskytovať úplne nový obsah. Toto je výhoda tohto typu oproti filtrovaniu na základe obsahu, pretože filtrovanie na základe obsahu je založené iba na preferenciách používateľa a neponúka nič nové.
+
+Treba tiež povedať, že veľkou nevýhodou všetkých uvedených typov odporúčacích systémov je problém studeného štartu (cold start). Problém so studeným štartom súvisí s nedostatkom informácií dostupných v algoritme odporúčaní\cite{lika_cold_strart10}. Studený štart je stav, keď odporúčací systém ešte nevie nič o používateľovi a jeho preferenciách. Stáva sa to vo fáze registrácie na konkrétnej sociálnej sieti, keď používateľ ešte nezačal sledovať určitý obsah.
+
+
 \end{itemize}
+
+
+
 
 
 
